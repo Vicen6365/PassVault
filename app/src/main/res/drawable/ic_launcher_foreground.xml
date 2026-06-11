@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Shield body -->
+    <path
+        android:fillColor="#3B7BF5"
+        android:pathData="M54,20 L30,30 L30,54 C30,72 40,88 54,94 C68,88 78,72 78,54 L78,30 Z"/>
+
+    <!-- Shield inner darker -->
+    <path
+        android:fillColor="#1B5AE0"
+        android:pathData="M54,26 L34,34 L34,54 C34,69 42,83 54,88 C66,83 74,69 74,54 L74,34 Z"/>
+
+    <!-- Keyhole circle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,48m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"/>
+
+    <!-- Keyhole slot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,52h8v8a4,6 0,0 1,-8 0z"/>
+
+    <!-- Key bit at bottom -->
+    <path
+        android:fillColor="#AAC7FF"
+        android:pathData="M54,60v8 M48,64h12 M48,68h10 M50,72h8"/>
+
+    <!-- Subtle paw print on shield (Claw branding) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M44,36a3,3 0,1 1,0 -4a3,3 0,0 1,0 4z
+                           M54,32a3,3 0,1 1,0 -4a3,3 0,0 1,0 4z
+                           M64,36a3,3 0,1 1,0 -4a3,3 0,0 1,0 4z
+                           M54,42a5,5 0,1 1,0 -8a5,5 0,0 1,0 8z"/>
+</vector>
