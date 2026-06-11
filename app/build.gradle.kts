@@ -84,9 +84,9 @@ dependencies {
 
     // Google Drive + Sign-In
     implementation("com.google.android.gms:play-services-auth:21.3.0")
-    implementation("com.google.api-client:google-api-client-android:2.7.2")
-    implementation("com.google.apis:google-api-services-drive:v3-rev20241208-2.0.0")
-    implementation("com.google.http-client:google-http-client-gson:1.44.2")
+    implementation("com.google.api-client:google-api-client-android:2.8.0")
+    implementation("com.google.apis:google-api-services-drive:v3-rev20260428-2.0.0")
+    implementation("com.google.http-client:google-http-client-gson:1.46.0")
 
     // Window size class (foldable support)
     implementation("androidx.compose.material3:material3-window-size-class")
