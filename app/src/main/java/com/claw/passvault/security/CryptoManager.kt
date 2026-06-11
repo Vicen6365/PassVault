@@ -167,10 +167,15 @@ object CryptoManager {
             sb.append(chars[secureRandom.nextInt(chars.length)])
         }
 
-        // Shuffle
-        val result = sb.toString().toCharArray()
-        result.shuffle(secureRandom)
-        return String(result)
+        // Shuffle using SecureRandom
+        val result = sb.toString().toMutableList()
+        for (i in result.indices.reversed()) {
+            val j = secureRandom.nextInt(i + 1)
+            val tmp = result[i]
+            result[i] = result[j]
+            result[j] = tmp
+        }
+        return result.joinToString("")
     }
 
     fun clearCache() {
