@@ -26,7 +26,8 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     private val _state = MutableStateFlow(SettingsState())
     val state: StateFlow<SettingsState> = _state.asStateFlow()
 
-    private val prefs = application.getSharedPreferences("vault_prefs", Context.MODE_PRIVATE)
+    private val app = getApplication<Application>()
+    private val prefs = app.getSharedPreferences("vault_prefs", Context.MODE_PRIVATE)
 
     init {
         loadSettings()
@@ -35,8 +36,8 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     private fun loadSettings() {
         _state.value = _state.value.copy(
             darkMode = prefs.getString("dark_mode", "system") ?: "system",
-            biometricEnabled = BiometricAuthManager.isBiometricEnabled(application),
-            hasBiometric = BiometricAuthManager.canUseBiometric(application),
+            biometricEnabled = BiometricAuthManager.isBiometricEnabled(app),
+            hasBiometric = BiometricAuthManager.canUseBiometric(app),
             driveBackupEnabled = prefs.getBoolean("drive_backup_enabled", false),
             autoLockMinutes = prefs.getInt("auto_lock_minutes", 5)
         )
@@ -48,7 +49,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun toggleBiometric(enabled: Boolean) {
-        BiometricAuthManager.setBiometricEnabled(application, enabled)
+        BiometricAuthManager.setBiometricEnabled(app, enabled)
         _state.value = _state.value.copy(biometricEnabled = enabled)
     }
 

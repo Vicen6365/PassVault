@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,6 +33,7 @@ fun VaultScreen(
     var selectedCategory by remember { mutableStateOf("ALL") }
     var expandedEntry by remember { mutableStateOf<Long?>(null) }
     var deleteConfirm by remember { mutableStateOf<Long?>(null) }
+    val clipboardManager = LocalClipboardManager.current
 
     LaunchedEffect(Unit) {
         viewModel.loadPasswords()
@@ -158,13 +159,11 @@ fun VaultScreen(
                             isExpanded = expandedEntry == entry.id,
                             onClick = { expandedEntry = if (expandedEntry == entry.id) null else entry.id },
                             onCopyPassword = {
-                                val clipboard = androidx.compose.ui.platform.LocalClipboardManager.current
-                                clipboard.setText(androidx.compose.ui.text.AnnotatedString(entry.password))
+                                clipboardManager.setText(AnnotatedString(entry.password))
                                 expandedEntry = null
                             },
                             onCopyUsername = {
-                                val clipboard = androidx.compose.ui.platform.LocalClipboardManager.current
-                                clipboard.setText(androidx.compose.ui.text.AnnotatedString(entry.username))
+                                clipboardManager.setText(AnnotatedString(entry.username))
                                 expandedEntry = null
                             },
                             onEdit = { onAddEdit(entry.id) },

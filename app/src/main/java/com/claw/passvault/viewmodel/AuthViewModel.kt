@@ -28,7 +28,8 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     private val _state = MutableStateFlow(AuthState())
     val state: StateFlow<AuthState> = _state.asStateFlow()
 
-    private val prefs = application.getSharedPreferences("vault_prefs", Context.MODE_PRIVATE)
+    private val app = getApplication<Application>()
+    private val prefs = app.getSharedPreferences("vault_prefs", Context.MODE_PRIVATE)
 
     init {
         checkInitialState()
@@ -38,8 +39,8 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
         _state.value = _state.value.copy(
             isFirstRun = !prefs.getBoolean("vault_initialized", false),
             isAuthenticated = false,
-            hasBiometric = BiometricAuthManager.canUseBiometric(application),
-            biometricEnabled = BiometricAuthManager.isBiometricEnabled(application)
+            hasBiometric = BiometricAuthManager.canUseBiometric(app),
+            biometricEnabled = BiometricAuthManager.isBiometricEnabled(app)
         )
     }
 
@@ -126,7 +127,7 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun toggleBiometric(enabled: Boolean) {
-        BiometricAuthManager.setBiometricEnabled(application, enabled)
+        BiometricAuthManager.setBiometricEnabled(app, enabled)
         _state.value = _state.value.copy(biometricEnabled = enabled)
     }
 
