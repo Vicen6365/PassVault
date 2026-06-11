@@ -18,21 +18,29 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle.kts', '**/gradle-wrapper.properties') }}
+          restore-keys: gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: Sign APK (debug keystore)
+      - name: Sign APK
         run: |
-          # Generate debug keystore for signing
           keytool -genkey -v -keystore debug.keystore -alias debug \
             -keyalg RSA -keysize 2048 -validity 10000 \
             -storepass android -keypass android \
-            -dname "CN=PassVault, OU=Claw, O=PassVault, L=Illescas, ST=Toledo, C=ES"
-          # Sign with apksigner
-          $ANDROID_HOME/build-tools/35.0.0/apksigner sign \
+            -dname "CN=PassVault, OU=Claw, O=PassVault, L=Illescas, ST=Toledo, C=ES" \
+            -noprompt
+          ${ANDROID_HOME}/build-tools/35.0.0/apksigner sign \
             --ks debug.keystore --ks-pass pass:android \
             --ks-key-alias debug --key-pass pass:android \
             app/build/outputs/apk/release/app-release-unsigned.apk
