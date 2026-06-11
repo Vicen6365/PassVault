@@ -33,8 +33,18 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
+      - name: Sign APK
+        run: |
+          ${ANDROID_HOME}/build-tools/35.0.0/apksigner sign \
+            --ks passvault-release.keystore \
+            --ks-pass pass:clawpass2026 \
+            --ks-key-alias passvault \
+            --key-pass pass:clawpass2026 \
+            --out app/build/outputs/apk/release/PassVault-signed.apk \
+            app/build/outputs/apk/release/app-release-unsigned.apk
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PassVault-APK
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/apk/release/PassVault-signed.apk
