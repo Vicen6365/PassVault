@@ -1,0 +1,5 @@
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.claw.passvault.data.model.** { *; }
+-dontwarn com.google.api.client.**
+-dontwarn com.google.api.services.drive.**

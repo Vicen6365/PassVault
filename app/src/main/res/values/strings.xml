@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PassVault</string>
+    <string name="login_title">PassVault 🔐</string>
+    <string name="login_subtitle">Gestor de contraseñas seguro</string>
+    <string name="master_password">Contraseña maestra</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="unlock">Desbloquear</string>
+    <string name="create_vault">Crear bóveda</string>
+    <string name="use_fingerprint">Usar huella dactilar</string>
+    <string name="vault_empty">No hay contraseñas guardadas.\nToca + para añadir una.</string>
+    <string name="add_password">Añadir contraseña</string>
+    <string name="edit_password">Editar contraseña</string>
+    <string name="title_field">Título</string>
+    <string name="username_field">Usuario / Email</string>
+    <string name="password_field">Contraseña</string>
+    <string name="notes_field">Notas</string>
+    <string name="category_field">Categoría</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="search_hint">Buscar contraseñas…</string>
+    <string name="settings">Ajustes</string>
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="auto_lock">Auto-bloqueo</string>
+    <string name="backup_drive">Respaldar en Google Drive</string>
+    <string name="backup_now">Respaldar ahora</string>
+    <string name="restore_drive">Restaurar desde Drive</string>
+    <string name="change_master_password">Cambiar contraseña maestra</string>
+    <string name="password_generator">Generar contraseña</string>
+    <string name="copy_username">Copiar usuario</string>
+    <string name="copy_password">Copiar contraseña</string>
+    <string name="copied">¡Copiado!</string>
+    <string name="delete_confirm">¿Eliminar \"%1$s\"?</string>
+    <string name="delete_confirm_msg">Esta acción no se puede deshacer.</string>
+    <string name="export_vault">Exportar bóveda</string>
+    <string name="import_vault">Importar bóveda</string>
+    <string name="about">Acerca de</string>
+    <string name="lock_now">Bloquear ahora</string>
+    <string name="password_strength_weak">Débil</string>
+    <string name="password_strength_fair">Regular</string>
+    <string name="password_strength_good">Buena</string>
+    <string name="password_strength_strong">Fuerte</string>
+    <string name="password_strength_very_strong">Muy fuerte</string>
+    <string name="clipboard_cleared">Portapapeles limpiado</string>
+</resources>
