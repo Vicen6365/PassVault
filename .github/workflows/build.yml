@@ -33,20 +33,8 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: Sign APK
-        run: |
-          keytool -genkey -v -keystore debug.keystore -alias debug \
-            -keyalg RSA -keysize 2048 -validity 10000 \
-            -storepass android -keypass android \
-            -dname "CN=PassVault, OU=Claw, O=PassVault, L=Illescas, ST=Toledo, C=ES" \
-            -noprompt
-          ${ANDROID_HOME}/build-tools/35.0.0/apksigner sign \
-            --ks debug.keystore --ks-pass pass:android \
-            --ks-key-alias debug --key-pass pass:android \
-            app/build/outputs/apk/release/app-release-unsigned.apk
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: PassVault-APK
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          path: app/build/outputs/apk/release/app-release.apk

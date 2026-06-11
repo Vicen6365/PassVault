@@ -16,7 +16,10 @@ object BiometricAuthManager {
 
     fun canUseBiometric(context: Context): Boolean {
         val biometricManager = BiometricManager.from(context)
+        // Try STRONG first (fingerprint/iris), fallback to WEAK (face, etc.)
         return biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG) ==
+                BiometricManager.BIOMETRIC_SUCCESS ||
+                biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK) ==
                 BiometricManager.BIOMETRIC_SUCCESS
     }
 

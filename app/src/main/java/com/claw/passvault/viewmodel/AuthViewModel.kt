@@ -60,6 +60,10 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                         .putString("verification_token", verificationToken)
                         .apply()
                 }
+                // Auto-enable biometric if the device supports it
+                if (BiometricAuthManager.canUseBiometric(app)) {
+                    BiometricAuthManager.setBiometricEnabled(app, true)
+                }
                 _state.value = _state.value.copy(
                     isFirstRun = false,
                     isAuthenticated = true,
