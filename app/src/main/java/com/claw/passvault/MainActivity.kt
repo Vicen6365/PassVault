@@ -2,8 +2,8 @@ package com.claw.passvault
 
 import android.content.Context
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.fragment.app.FragmentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -21,7 +21,7 @@ import com.claw.passvault.viewmodel.SettingsViewModel
 import com.claw.passvault.viewmodel.VaultViewModel
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
